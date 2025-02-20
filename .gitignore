@@ -24,7 +24,6 @@ slimpajama
 results
 wandb
 *.csv
-*.png
 *.html
 eval_results
 
