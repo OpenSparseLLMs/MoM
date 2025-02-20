@@ -7,9 +7,11 @@
 Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequence Modeling with Mixture-of-Memories](https://arxiv.org/abs/2502.13685). MoM is compatible with all kinds of linear sequence modeling methods like: linear attention, SSM, linear RNNs, etc. You can find a introduction artical about MoM on [Zhihu](https://zhuanlan.zhihu.com/p/25066090353).
 
 <p align="center">
-  <img src="assets/mom_fig1.png" width="80%" />
-  <figcaption style="text-align: center;">Figure 1: MoM Architecture</figcaption>
+  <img src="assets/mom_fig1.png" width="70%" />
 </p>
+<div align="center">
+Figure 1: MoM Architecture
+</div>
 
 ## 🛠 Installation
 
