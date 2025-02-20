@@ -1,10 +1,15 @@
-# 📚 MoM: Linear Sequence Modeling with Mixture-of-Memories
-
-Welcome to MoM! This repository provides an efficient approach for linear sequence modeling using a Mixture-of-Memories mechanism.
-
 <div align="center">
-  <img height="150" alt="image" src="assets/MoM.jpg">
+
+# Mixture-of-Memories
+
 </div>
+
+Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequence Modeling with Mixture-of-Memories](https://arxiv.org/abs/2502.13685). MoM is compatible with all kinds of linear sequence modeling methods like: linear attention, SSM, linear RNNs, etc. You can find a introduction artical about MoM on [Zhihu](https://zhuanlan.zhihu.com/p/25066090353).
+
+<p align="center">
+  <img src="assets/mom_fig1.png" width="80%" />
+  <figcaption style="text-align: center;">Figure 1: MoM Architecture</figcaption>
+</p>
 
 ## 🛠 Installation
 
@@ -47,6 +52,17 @@ bash eval.sh
 For recall-intensive tasks, please follow the instructions in [Prefix Linear Attention](https://github.com/HazyResearch/prefix-linear-attention)
 
 ## 🙌 Acknowledgements
-This project builds upon the work of [Flash Linear Attention](https://github.com/fla-org/flash-linear-attention). Huge thanks to the original authors for their contributions!🎉
+This project builds upon the work of [FLA](https://github.com/fla-org/flash-linear-attention).
 
 Happy experimenting! 🚀🔥
+
+# Citation
+If you find this repo useful, please consider citing our work:
+```bib
+@article{du2025mom,
+  title={MoM: Linear Sequence Modeling with Mixture-of-Memories},
+  author={Du, Jusen and Sun, Weigao and Lan, Disen and Hu, Jiaxi and Cheng, Yu},
+  journal={arXiv preprint arXiv:2502.13685},
+  year={2025}
+}
+```
