@@ -26,12 +26,40 @@ if TYPE_CHECKING:
 
 def transform(x: torch.Tensor, routing_mask: torch.Tensor, num_memories: int, selected_memories: torch.Tensor, capacity: float):
     '''
-    transform the hidden_states into chunks by memories
+    Transform input sequences into memory-organized chunks with capacity constraints.
+    
+    Processes input sequences by routing tokens to designated memory states according to routing_mask,
+    sorts tokens by memory assignments, handles token truncation/padding based on memory capacity,
+    and returns memory-aligned tensors for parallel processing.
+
+    Key operations:
+    1. Expands input tensors when multiple memories are selected per token (top-k routing)
+    2. Sorts tokens globally by (batch_idx, memory_idx) to group memory-assigned tokens
+    3. Applies capacity-aware truncation (left-truncate oldest tokens when exceeding capacity)
+    4. Pads memory chunks to uniform length for tensorization
 
     Args:
-        x: (batch_size, seq_len, hidden_size)
+        x: Input hidden states
+            Shape: (batch_size, seq_len, hidden_size)
+        routing_mask: Binary mask indicating active memory assignments
+            Shape: (batch_size, seq_len, num_memories)
+        num_memories: Total number of memories per batch
+        selected_memories: Memory indices assigned to each token. When using top-k routing,
+            this contains k memory indices per token (k >= 1)
+            Shape: (batch_size, seq_len) for k=1 or (batch_size, seq_len, topk) for k>1
+        capacity: Scaling factor for memory capacity calculation. Actual capacity per memory is
+            ceil(seq_len * capacity), maintaining proportional capacity to sequence length
+
     Returns:
-        transformed_x: (memory, batch, selected_len, hidden_size)
+        transformed_x: Memory-organized tensor with zero-padded capacity alignment
+            Shape: (num_memories, batch_size, capacity_len, hidden_size)
+        truncation_indices: Original indices used for gathering tokens after capacity truncation
+            Shape: (batch*num_memories, max_len)
+        sorted_indices: Sorting indices used to group tokens by memory assignments
+            Shape: (batch_size*seq_len*topk)
+        max_len: Maximum tokens per memory
+        mask: Boolean mask indicating valid (non-padded) positions in transformed_x
+            Shape: (batch*num_memories, max_len)
     '''
     if selected_memories.dim() == 3:
         # (batch, seq, topk)
@@ -89,16 +117,47 @@ def transform(x: torch.Tensor, routing_mask: torch.Tensor, num_memories: int, se
 
     return transformed_x, truncation_indices, sorted_indices, max_len, mask
     # (num_memories, batch, seq, hidden)
-    
+
 # @torch.jit.script
 def reconstruct(transformed_x, indices: torch.Tensor, sorted_indices: torch.Tensor, batch_size: int, seq_len: int, topk: int, routing_weights: torch.Tensor, mask: torch.Tensor):
     '''
-    reconstruct and mix the output back into the original shape
+    Reconstruct and mix transformed outputs back into the original input sequence shape.
+
+    Key operations:
+    1. Reshapes and transposes `transformed_x` to prepare for scattering.
+    2. Applies the `mask` to zero out invalid positions.
+    3. Uses `torch.scatter_add_` to scatter and sum the transformed outputs back to their original positions based on `indices`.
+    4. Rearranges the scattered outputs using `sorted_indices` to ensure correct ordering.
+    5. Applies the `routing_weights` to weight the outputs.
+    6. Sums over the `topk` dimension to produce the final reconstructed output.
 
     Args:
-        transformed_x: (memory, batch, selected_len, hidden_size)
+        transformed_x (torch.Tensor):
+            The transformed output tensor from memory units or experts.
+            Shape: (num_memories, batch_size, capacity_len, hidden_size)
+        indices (torch.Tensor):
+            Indices used for scattering the transformed outputs back to their corresponding positions.
+            Shape: (batch*num_memories, max_len)
+        sorted_indices (torch.Tensor):
+            Sorting indices used to rearrange the scattered outputs back into the original sequence order.
+            Shape: (batch_size*seq_len*topk)
+        batch_size (int):
+            The size of the batch.
+        seq_len (int):
+            The length of the input sequence.
+        topk (int):
+            The number of top elements selected (`topk`) per token during the selection process.
+        routing_weights (torch.Tensor):
+            Routing weights assigned to the top-k selected outputs when reconstructing the final output.
+            Shape: (batch_size, seq_len, topk)
+        mask (torch.Tensor):
+            Boolean mask indicating valid positions in the sequence.
+            Shape: (batch*num_memories, max_len)
+
     Returns:
-        restored_x: (batch_size, seq_len, hidden_size)
+        restored_x (torch.Tensor):
+            The reconstructed output tensor in the original input sequence shape.
+            Shape: (batch_size, seq_len, hidden_size)
     '''
     transformed_x = transformed_x.transpose(0, 1).reshape((-1, transformed_x.shape[2], transformed_x.shape[3], transformed_x.shape[4]))
     b, s, k, h, d = batch_size, seq_len, topk, transformed_x.shape[2], transformed_x.shape[3]
@@ -121,6 +180,7 @@ def reconstruct(transformed_x, indices: torch.Tensor, sorted_indices: torch.Tens
     restored_x = restored_x.reshape(b, s, k, h, d) * routing_weights.reshape(b, s, k).unsqueeze(-1).unsqueeze(-1)
     restored_x = restored_x.sum(dim=2)
     return restored_x
+
 
 class MomGatedSlotAttention(nn.Module):
 
