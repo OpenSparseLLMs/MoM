@@ -17,11 +17,11 @@
   "use_cache": true,
   "vocab_size": 32000,
   "use_short_conv": true,
-  "num_experts": 4,
+  "num_memories": 4,
   "topk": 2,
   "capacity": 1.0,
   "use_layer_wise_balance": true,
   "aux_loss_scale": 0.01,
   "shared_mem": true,
-  "single_expert": false
+  "single_kv_proj": false
 }

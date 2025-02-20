@@ -13,8 +13,11 @@ from transformers import AutoConfig, AutoModelForCausalLM, PretrainedConfig
 from transformers.optimization import get_cosine_schedule_with_warmup
 
 import fla
+import mom
 
-classes = [getattr(fla.models, i) for i in fla.models.__all__]
+classes1 = [getattr(mom.models, i) for i in mom.models.__all__]
+classes2 = [getattr(fla.models, i) for i in fla.models.__all__]
+classes = classes1 + classes2
 configs = {i.model_type: i() for i in classes if issubclass(i, PretrainedConfig)}
 
 

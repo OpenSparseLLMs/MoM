@@ -15,7 +15,8 @@ parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
 
 sys.path.append(parent_dir)
 
-import fla  # noqa
+import mom  # noqa
+import fla
 from flame.data import DataCollatorForLanguageModeling
 from flame.logging import LogCallback, get_logger
 from flame.parser import get_train_args

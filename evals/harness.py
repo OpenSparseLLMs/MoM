@@ -11,7 +11,8 @@ parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
 
 sys.path.append(parent_dir)
 
-import fla  # noqa
+import mom  # noqa
+import fla
 from lm_eval.__main__ import cli_evaluate
 from lm_eval.api.registry import register_model
 from lm_eval.models.huggingface import HFLM

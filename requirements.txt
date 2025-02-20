@@ -38,6 +38,7 @@ joblib==1.4.2
 jsonlines==4.0.0
 latexcodec==3.0.0
 -e git+https://github.com/EleutherAI/lm-evaluation-harness@703fbffd6fe5e136bbb9d884cb40844e5503ae5d#egg=lm_eval
+-e git+https://github.com/fla-org/flash-linear-attention
 lxml==5.3.0
 MarkupSafe==2.1.5
 mbstrdecoder==1.1.3
