@@ -11,7 +11,7 @@ bash train.sh \
   context=2048 \
   path=SlimPajama/mom-15B \
   project=SlimPajama \
-  model=configs/mom.json \
+  model=./configs/mom_340M.json \
   tokenizer=fla-hub/gla-1.3B-100B \
   data=SlimPajama-627B \
   cache=data/chunk1/train

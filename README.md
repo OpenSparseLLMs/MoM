@@ -15,12 +15,14 @@ Figure 1: MoM Architecture
 
 ## Installation
 
-First, create a new virtual environment and install the required dependencies:
-```bash
-conda create --name mom python=3.10
-conda activate mom
-pip install -r requirements.txt
-```
+The following requirements should be satisfied:
+- [PyTorch](https://pytorch.org/) >= 2.5
+- [Triton](https://github.com/openai/triton) >=3.0 (or nightly version, see [FAQs](FAQs.md))
+- [einops](https://einops.rocks/)
+- [transformers](https://github.com/huggingface/transformers) >=4.45.0
+- [datasets](https://github.com/huggingface/datasets) >=3.3.0
+- [causal-conv1d](https://github.com/Dao-AILab/causal-conv1d) >=1.4.0
+
 
 ## Getting Started
 
@@ -29,24 +31,25 @@ Before training, make sure to preprocess your data by following the steps outlin
 
 ### Training From Scratch
 
-To start training with the default setup, simply run:
+To start training with default setup, simply run:
 ```bash
-cd trainning
-bash cmd_mom.sh
+cd examples
+sh run_train_mom.sh
 ```
 
 You can also
-- Modify the script to adjust the training configuration.
-- Modify the [training/configs/mom.json](training/configs/mom.json) to adjust the MoM structure.
+- Modify the script to adjust the modeling and training settings.
+- e.g., modify [examples/configs/mom_340M.json](examples/configs/mom_340M.json) to adjust the MoM model structure.
 
 ### Evaluation
 
-To evaluate MoM on **commonsense reasoning benchmarks**, you can run:
+To evaluate model checkpoints on **commonsense reasoning benchmarks**, we recommend you to run:
 ```bash
-bash eval.sh
+cd examples
+sh run_eval.sh
 ```
 
-To evaluate MoM on **recall-intensive tasks**, please follow the instructions in [Prefix Linear Attention](https://github.com/HazyResearch/prefix-linear-attention).
+To evaluate model checkpoints on **recall-intensive tasks**, we recommend you to use [lm-evaluation-harness-recall](https://github.com/weigao266/lm-evaluation-harness-recall).
 
 ## Acknowledgement
 This repo builds upon the open-source [flash-linear-attention](https://github.com/fla-org/flash-linear-attention). Happy experimenting. 🔥🚀🔥

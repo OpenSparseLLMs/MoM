@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2024, Songlin Yang, Yu Zhang
 
 
 from __future__ import annotations
