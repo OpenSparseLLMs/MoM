@@ -48,10 +48,12 @@ To evaluate model checkpoints on **commonsense reasoning benchmarks**, we recomm
 sh run_eval.sh
 ```
 
-To evaluate model checkpoints on **recall-intensive tasks**, we recommend you to use [lm-evaluation-harness-recall](https://github.com/weigao266/lm-evaluation-harness-recall).
+To evaluate model checkpoints on **recall-intensive tasks**, please follow the instructions in [Prefix Linear Attention](https://github.com/HazyResearch/prefix-linear-attention)
 
 ## Acknowledgement
-This repo builds upon the open-source [flash-linear-attention](https://github.com/fla-org/flash-linear-attention). Happy experimenting. 🔥🚀🔥
+This repo builds upon the open-source [flash-linear-attention](https://github.com/fla-org/flash-linear-attention). Special thanks for providing a solid foundation for this work.
+
+Happy experimenting. 🔥🚀🔥
 
 ## Citation
 If you find this repo useful, please consider citing our paper:
