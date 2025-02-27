@@ -1,22 +1,19 @@
 <div align="center">
 
-# MoM: Linear Sequence Modeling with Mixture-of-Memories
-[![arXiv](https://img.shields.io/badge/Arxiv-2502.13685-b31b1b.svg?logo=arXiv)](https://zhuanlan.zhihu.com/p/25066090353)
-[![zhihu](https://img.shields.io/badge/Zhihu-Intro-blue?logo=zhihu)]()
-[![stars](https://img.shields.io/github/stars/OpenSparseLLMs/MoM)](https://github.com/OpenSparseLLMs/MoM/stargazers)
+# Mixture-of-Memories
+
 </div>
 
-Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequence Modeling with Mixture-of-Memories](https://arxiv.org/abs/2502.13685), on huggingface eco-system. 
-MoM is compatible with all kinds of linear sequence modeling methods like: linear attention, SSM, linear RNN, etc. **Here is an introductory artical about MoM (in Chinese) on [Zhihu](https://zhuanlan.zhihu.com/p/25066090353)**.
+Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequence Modeling with Mixture-of-Memories](https://arxiv.org/abs/2502.13685), on huggingface eco-system. MoM is compatible with all kinds of linear sequence modeling methods like: linear attention, SSM, linear RNN, etc. **Here is an introductory artical about MoM (in Chinese) on [Zhihu](https://zhuanlan.zhihu.com/p/25066090353)**.
 
 <p align="center">
-  <img src="assets/mom_fig1.png" width="60%" />
+  <img src="assets/mom_fig1.png" width="65%" />
 </p>
 <div align="center">
 Figure 1: MoM Architecture
 </div>
 
-## 🛠 Installation
+## Installation
 
 The following requirements should be satisfied:
 - [PyTorch](https://pytorch.org/) >= 2.5
@@ -27,7 +24,7 @@ The following requirements should be satisfied:
 - [causal-conv1d](https://github.com/Dao-AILab/causal-conv1d) >=1.4.0
 
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Data Preparation
 Before training, make sure to preprocess your data by following the steps outlined in [training/README.md](training/README.md).
@@ -36,29 +33,28 @@ Before training, make sure to preprocess your data by following the steps outlin
 
 To start training with default setup, simply run:
 ```bash
-cd training
+cd examples
 sh run_train_mom.sh
 ```
 
 You can also
 - Modify the script to adjust the modeling and training settings.
-- e.g., modify [training/configs/mom_340M.json](training/configs/mom_340M.json) to adjust the MoM model structure.
+- e.g., modify [examples/configs/mom_340M.json](examples/configs/mom_340M.json) to adjust the MoM model structure.
 
 ### Evaluation
 
 To evaluate model checkpoints on **commonsense reasoning benchmarks**, we recommend you to run:
 ```bash
+cd examples
 sh run_eval.sh
 ```
 
-To evaluate model checkpoints on **recall-intensive tasks**, please follow the instructions in [Prefix Linear Attention](https://github.com/HazyResearch/prefix-linear-attention)
+To evaluate model checkpoints on **recall-intensive tasks**, we recommend you to use [lm-evaluation-harness-recall](https://github.com/weigao266/lm-evaluation-harness-recall).
 
-## 🙌 Acknowledgement
-This repo builds upon the open-source [flash-linear-attention](https://github.com/fla-org/flash-linear-attention). Special thanks for providing a solid foundation for this work.
+## Acknowledgement
+This repo builds upon the open-source [flash-linear-attention](https://github.com/fla-org/flash-linear-attention). Happy experimenting. 🔥🚀🔥
 
-Happy experimenting. 🔥🚀🔥
-
-## ✅ Citation
+## Citation
 If you find this repo useful, please consider citing our paper:
 ```bib
 @article{du2025mom,
