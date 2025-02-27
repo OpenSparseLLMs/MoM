@@ -33,19 +33,18 @@ Before training, make sure to preprocess your data by following the steps outlin
 
 To start training with default setup, simply run:
 ```bash
-cd examples
+cd training
 sh run_train_mom.sh
 ```
 
 You can also
 - Modify the script to adjust the modeling and training settings.
-- e.g., modify [examples/configs/mom_340M.json](examples/configs/mom_340M.json) to adjust the MoM model structure.
+- e.g., modify [training/configs/mom_340M.json](training/configs/mom_340M.json) to adjust the MoM model structure.
 
 ### Evaluation
 
 To evaluate model checkpoints on **commonsense reasoning benchmarks**, we recommend you to run:
 ```bash
-cd examples
 sh run_eval.sh
 ```
 
