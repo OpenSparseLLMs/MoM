@@ -2,8 +2,10 @@
 
 # MoM: Mixture-of-Memories
 [![arXiv](https://img.shields.io/badge/Arxiv-2502.13685-b31b1b.svg?logo=arXiv)](https://zhuanlan.zhihu.com/p/25066090353)
-[![zhihu](https://img.shields.io/badge/Zhihu-Intro-blue?logo=zhihu)]()
+[![huggingface weights](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Weights-ffc107?color=ffc107&logoColor=white)](https://huggingface.co/linear-moe-hub)
+[![zhihu](https://img.shields.io/badge/Zhihu-Intro-blue?logo=zhihu)](https://zhuanlan.zhihu.com/p/25066090353)
 [![stars](https://img.shields.io/github/stars/OpenSparseLLMs/MoM)](https://github.com/OpenSparseLLMs/MoM/stargazers)
+
 </div>
 
 Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequence Modeling with Mixture-of-Memories](https://arxiv.org/abs/2502.13685), on huggingface eco-system. MoM is compatible with all kinds of linear sequence modeling methods like: linear attention, SSM, linear RNN, etc. **Here is an introductory artical about MoM (in Chinese) on [Zhihu](https://zhuanlan.zhihu.com/p/25066090353)**.
