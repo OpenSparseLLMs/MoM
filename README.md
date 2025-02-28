@@ -1,7 +1,7 @@
 <div align="center">
 
 # MoM: Mixture-of-Memories
-[![arXiv](https://img.shields.io/badge/Arxiv-2502.13685-b31b1b.svg?logo=arXiv)](https://zhuanlan.zhihu.com/p/25066090353)
+[![arXiv](https://img.shields.io/badge/Arxiv-2502.13685-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2502.13685)
 [![huggingface weights](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Weights-ffc107?color=ffc107&logoColor=white)](https://huggingface.co/linear-moe-hub)
 [![zhihu](https://img.shields.io/badge/Zhihu-Intro-blue?logo=zhihu)](https://zhuanlan.zhihu.com/p/25066090353)
 [![stars](https://img.shields.io/github/stars/OpenSparseLLMs/MoM)](https://github.com/OpenSparseLLMs/MoM/stargazers)
