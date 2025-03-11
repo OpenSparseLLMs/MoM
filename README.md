@@ -17,11 +17,11 @@ Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequ
 Figure 1: MoM Architecture
 </div>
 
-## 🛠 Installation
+## Installation
 
 The following requirements should be satisfied:
 - [PyTorch](https://pytorch.org/) >= 2.5
-- [Triton](https://github.com/openai/triton) >=3.0 (or nightly version, see [FAQs](FAQs.md))
+- [Triton](https://github.com/openai/triton) >=3.0
 - [einops](https://einops.rocks/)
 - [transformers](https://github.com/huggingface/transformers) >=4.45.0
 - [datasets](https://github.com/huggingface/datasets) >=3.3.0
@@ -32,7 +32,7 @@ Install the package from source:
 pip install -e .
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Data Preparation
 Before training, make sure to preprocess your data by following the steps outlined in [training/README.md](training/README.md).
@@ -105,10 +105,10 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4 python launch_local.py \
     -p
 ```
 
-## 🙌 Acknowledgement
+## Acknowledgement
 This repo builds upon the open-source [flash-linear-attention](https://github.com/fla-org/flash-linear-attention) and the evaluation code is based on [prefix-linear-attention](https://github.com/HazyResearch/prefix-linear-attention). Happy experimenting! 🔥🚀🔥
 
-## ✅ Citation
+## Citation
 If you find this repo useful, please consider citing our paper:
 ```bib
 @article{du2025mom,
