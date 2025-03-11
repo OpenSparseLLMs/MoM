@@ -8,14 +8,7 @@ import sys
 import os
 import torch
 from torch import nn
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
-
-parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
-
-sys.path.append(parent_dir)
-
-import mom  # noqa
+import mom
 import fla
 from flame.data import DataCollatorForLanguageModeling
 from flame.logging import LogCallback, get_logger

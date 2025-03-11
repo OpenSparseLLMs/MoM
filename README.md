@@ -27,6 +27,10 @@ The following requirements should be satisfied:
 - [datasets](https://github.com/huggingface/datasets) >=3.3.0
 - [causal-conv1d](https://github.com/Dao-AILab/causal-conv1d) >=1.4.0
 
+Install the package from source:
+```bash
+pip install -e .
+```
 
 ## 🚀 Getting Started
 
@@ -41,7 +45,6 @@ cd training
 
 bash train.sh \
   nodes=4 \
-  ip=$(scontrol show hostnames $SLURM_JOB_NODELIST | head -n 1) \
   gpus=8 \
   type=mom \
   lr=3e-4 \
@@ -76,10 +79,34 @@ accelerate launch --multi_gpu evals/harness.py --model hf \
     --device cuda
 ```
 
-To evaluate model checkpoints on **recall-intensive tasks**, we recommend you to use [lm-evaluation-harness-recall](https://github.com/weigao266/lm-evaluation-harness-recall).
+To evaluate model checkpoints on **recall-intensive tasks**, we recommend you to run:
+1. Install lm_eval
+```bash
+cd lm-eval-harness
+pip install -e .
+```
+2. Run the script:
+```bash
+MODEL_PATH=../training/SlimPajama/mom-15B/checkpoint-30720
+
+CUDA_VISIBLE_DEVICES=0,1,2,3,4 python launch_local.py \
+    --batch-size 32 \
+    -t based_squad \
+    -t based_swde \
+    -t based_fda \
+    -t based_drop \
+    -t based_triviaqa \
+    -t based_nq_2048 \
+    -m $MODEL_PATH \
+    --context_length 2048 \
+    --answer_length 48 \
+    --cutting_context \
+    --limit -1 \
+    -p
+```
 
 ## 🙌 Acknowledgement
-This repo builds upon the open-source [flash-linear-attention](https://github.com/fla-org/flash-linear-attention). Happy experimenting. 🔥🚀🔥
+This repo builds upon the open-source [flash-linear-attention](https://github.com/fla-org/flash-linear-attention) and the evaluation code is based on [prefix-linear-attention](https://github.com/HazyResearch/prefix-linear-attention). Happy experimenting! 🔥🚀🔥
 
 ## ✅ Citation
 If you find this repo useful, please consider citing our paper:

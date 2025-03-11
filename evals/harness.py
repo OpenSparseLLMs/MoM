@@ -4,13 +4,6 @@ from __future__ import annotations
 
 import sys
 import os
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
-
-parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
-
-sys.path.append(parent_dir)
-
 import mom  # noqa
 import fla
 from lm_eval.__main__ import cli_evaluate
