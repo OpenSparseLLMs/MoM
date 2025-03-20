@@ -455,6 +455,8 @@ class MomLinearAttentionForCausalLM(MomLinearAttentionPreTrainedModel, Generatio
             output = (logits,) + outputs[1:]
             return (loss,) + output if loss is not None else output
 
+        loss += aux_loss
+
         return MomLACausalLMOutputWithPast(
             loss=loss,
             logits=logits,

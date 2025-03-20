@@ -442,6 +442,8 @@ class MomGLAForCausalLM(MomGLAPreTrainedModel, GenerationMixin):
             output = (logits,) + outputs[1:]
             return (loss,) + output if loss is not None else output
 
+        loss += aux_loss
+
         return MomGLACausalLMOutputWithPast(
             loss=loss,
             logits=logits,

@@ -473,6 +473,8 @@ class MomGatedDeltaNetForCausalLM(MomGatedDeltaNetPreTrainedModel, GenerationMix
             output = (logits,) + outputs[1:]
             return (loss,) + output if loss is not None else output
 
+        loss += aux_loss
+
         return MomGatedDeltaNetCausalLMOutputWithPast(
             loss=loss,
             logits=logits,
