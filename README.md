@@ -14,7 +14,7 @@ Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequ
   <img src="assets/mom_fig1.png" width="65%" />
 </p>
 <div align="center">
-Figure 1: MoM Architecture
+MoM Architecture
 </div>
 
 ## Installation
