@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import sys
 import os
-import mom  # noqa
+# import mom  # noqa
 import fla
 from lm_eval.__main__ import cli_evaluate
 from lm_eval.api.registry import register_model

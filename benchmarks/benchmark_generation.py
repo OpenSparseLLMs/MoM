@@ -9,7 +9,7 @@ from datasets import load_dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 import fla  # noqa
-import mom  # noqa
+# import mom  # noqa
 
 
 def sizeof_fmt(num, suffix='B'):

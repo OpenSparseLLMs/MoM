@@ -8,7 +8,7 @@ import sys
 import os
 import torch
 from torch import nn
-import mom
+# import mom
 import fla
 from flame.data import DataCollatorForLanguageModeling
 from flame.logging import LogCallback, get_logger
