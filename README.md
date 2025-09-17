@@ -8,6 +8,9 @@
 
 </div>
 
+## News
+- [2025-09] Implemented MoM with `varlen` to improve operator efficiency and the code has been integrated into [flash-linear-attention](https://github.com/fla-org/flash-linear-attention) repository.
+
 Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequence Modeling with Mixture-of-Memories](https://arxiv.org/abs/2502.13685), on huggingface eco-system. MoM is compatible with all kinds of linear sequence modeling methods like: linear attention, SSM, linear RNN, etc. **Here is an introductory artical about MoM (in Chinese) on [Zhihu](https://zhuanlan.zhihu.com/p/25066090353)**.
 
 <p align="center">
@@ -18,6 +21,8 @@ MoM Architecture
 </div>
 
 ## Installation
+
+**⭐ If you have already installed the latest `fla` repository, you can skip this step.**
 
 The following requirements should be satisfied:
 - [PyTorch](https://pytorch.org/) >= 2.5
