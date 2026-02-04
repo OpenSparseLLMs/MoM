@@ -1,6 +1,6 @@
 <div align="center">
 
-# MoM: Mixture-of-Memories
+# [ICLR 2026] MoM: Mixture-of-Memories
 [![arXiv](https://img.shields.io/badge/Arxiv-2502.13685-b31b1b.svg?logo=arXiv)](https://arxiv.org/abs/2502.13685)
 [![huggingface weights](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Weights-ffc107?color=ffc107&logoColor=white)](https://huggingface.co/linear-moe-hub)
 [![zhihu](https://img.shields.io/badge/Zhihu-Intro-blue?logo=zhihu)](https://zhuanlan.zhihu.com/p/25066090353)
@@ -8,10 +8,11 @@
 
 </div>
 
-## News
+## 🔥 News
+- [2026-02] 🎉 **MoM has been accepted to ICLR 2026!**
 - [2025-09] Implemented MoM with `varlen` to improve operator efficiency and the code has been integrated into [flash-linear-attention](https://github.com/fla-org/flash-linear-attention) repository.
 
-Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequence Modeling with Mixture-of-Memories](https://arxiv.org/abs/2502.13685), on huggingface eco-system. MoM is compatible with all kinds of linear sequence modeling methods like: linear attention, SSM, linear RNN, etc. **Here is an introductory artical about MoM (in Chinese) on [Zhihu](https://zhuanlan.zhihu.com/p/25066090353)**.
+Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequence Modeling with Mixture-of-Memories](https://arxiv.org/abs/2502.13685), on huggingface eco-system. MoM is compatible with all kinds of linear sequence modeling methods like: linear attention, SSM, linear RNN, etc. **Here is an introductory article about MoM (in Chinese) on [Zhihu](https://zhuanlan.zhihu.com/p/25066090353)**.
 
 <p align="center">
   <img src="assets/mom_fig1.png" width="65%" />
@@ -20,9 +21,9 @@ Welcome to MoM! This repository provides the implementation of [MoM: Linear Sequ
 MoM Architecture
 </div>
 
-## Installation
+## 🛠️ Installation
 
-**⭐ If you have already installed the latest `fla` repository, you can skip this step.**
+**If you have already installed the latest `fla` repository, you can skip this step.**
 
 The following requirements should be satisfied:
 - [PyTorch](https://pytorch.org/) >= 2.5
@@ -37,7 +38,7 @@ Install the package from source:
 pip install -e .
 ```
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Data Preparation
 Before training, make sure to preprocess your data by following the steps outlined in [training/README.md](training/README.md).
@@ -70,7 +71,7 @@ You can also
 - Modify the script to adjust the modeling and training settings.
 - e.g., modify [examples/configs/mom_340M.json](examples/configs/mom_340M.json) to adjust the MoM model structure.
 
-### Evaluation
+### 📊 Evaluation
 
 To evaluate model checkpoints on **commonsense reasoning benchmarks**, we recommend you to run:
 ```bash
@@ -110,10 +111,10 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4 python launch_local.py \
     -p
 ```
 
-## Acknowledgement
-This repo builds upon the open-source [flash-linear-attention](https://github.com/fla-org/flash-linear-attention) and the evaluation code is based on [prefix-linear-attention](https://github.com/HazyResearch/prefix-linear-attention). Happy experimenting! 🔥🚀🔥
+## ✨ Acknowledgement
+This repo builds upon the open-source [flash-linear-attention](https://github.com/fla-org/flash-linear-attention) and the evaluation code is based on [prefix-linear-attention](https://github.com/HazyResearch/prefix-linear-attention). Happy experimenting!
 
-## Citation
+## 📜 Citation
 If you find this repo useful, please consider citing our paper:
 ```bib
 @article{du2025mom,
